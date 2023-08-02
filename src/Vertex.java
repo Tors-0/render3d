@@ -11,7 +11,7 @@ public class Vertex {
         float b = ((f * y)/(f + z));
         return new Point(a,b);
     }
-    public void rotateY(int theta) {
+    public void rotateY(float theta) {
         float c = (float) Math.cos(Math.toRadians(theta));
         float s = (float) Math.cos(Math.toRadians(theta));
         x = c * x - s * z;
