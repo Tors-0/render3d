@@ -26,7 +26,7 @@ public class Render {
                 g.drawLine((int) (Math.round(x.getX())+250), (int) (Math.round(x.getY())+250), (int) (Math.round(y.getX())+250), (int) (Math.round(y.getY())+250));
             });
         });
-        verify();
+        //verify();
     }
     public static void rotateY() {
         Cube.getCubes().forEach(c->{
