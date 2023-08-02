@@ -3,8 +3,7 @@ import java.util.HashMap;
 
 public class Cube {
     private ArrayList<Vertex> v = new ArrayList<>(); // list of all 8 contained vertices
-    //private Vertex[][] e = new Vertex[2][12]; // list of all 12 edge relations
-    private ArrayList<Edge> e = new ArrayList<>();
+    private ArrayList<Edge> e = new ArrayList<>(); // list of all 12 edges
     private static ArrayList<Cube> cubes = new ArrayList<>();
     public Cube(int x, int y, int z, int len) {
         // initialize vertices to proper points
@@ -43,5 +42,4 @@ public class Cube {
     public static ArrayList<Cube> getCubes() {
         return cubes;
     }
-    public static void init() {}
 }

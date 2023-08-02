@@ -5,9 +5,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Render {
-    static int fps = 60; // FPS
+    static float fps = 30; // FPS
     static float focal = 256; // FOCAL DISTANCE
-    static int rotAng = 3; // DEGREES TO ROTATE PER FRAME
+    static int rotAng = 2; // DEGREES TO ROTATE PER FRAME
     static DrawingPanel panel = new DrawingPanel(500,500);
     static Graphics g = panel.getGraphics();
     public static void start() {
@@ -15,7 +15,8 @@ public class Render {
         Scanner in = new Scanner(System.in);
         System.out.print("Press [ENTER] to begin...");
         String a = in.nextLine();
-        timedEvent.scheduleAtFixedRate(Render::update,0,(1000/fps), TimeUnit.MILLISECONDS);
+        timedEvent.scheduleAtFixedRate(Render::update,0,(long)(1000/fps), TimeUnit.MILLISECONDS);
+        timedEvent.scheduleAtFixedRate(Render::rotateY,0,(long)(1000/fps), TimeUnit.MILLISECONDS);
     }
     public static void update() {
         panel.clearWithoutRepaint();
@@ -28,6 +29,8 @@ public class Render {
                 g.drawLine(250+x.getX(),250+x.getY(),250+y.getX(),250+y.getY());
             });
         });
+    }
+    public static void rotateY() {
         Cube.getCubes().forEach(c->{
             c.getVertices().forEach(v->{
                 v.rotateY(rotAng);

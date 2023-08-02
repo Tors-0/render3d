@@ -17,6 +17,7 @@ public class Vertex {
         x = c * x - s * z;
         z = s * x + c * z;
     }
+    @Override
     public String toString() {
         return "" + x + ", " + y + ", " + z;
     }
