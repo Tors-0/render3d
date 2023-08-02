@@ -1,21 +1,24 @@
 public class Vertex {
     // actual vertex coordinates
-    private float x, y, z;
-    public Vertex(int x, int y, int z) {
+    private double x, y, z;
+    public Vertex(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
-    public Point project(float f) {
-        float a = ((f * x)/(f + z));
-        float b = ((f * y)/(f + z));
+    public Point project(double f) {
+        double a = ((f * x)/(f + z));
+        double b = ((f * y)/(f + z));
         return new Point(a,b);
     }
-    public void rotateY(float theta) {
-        float c = (float) Math.cos(Math.toRadians(theta));
-        float s = (float) Math.cos(Math.toRadians(theta));
+    public void rotateY(double theta) {
+        double c = Math.cos(Math.toRadians(theta));
+        double s = Math.sin(Math.toRadians(theta));
         x = c * x - s * z;
         z = s * x + c * z;
+    }
+    public double distanceTo(Vertex other) {
+        return Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2) + Math.pow(this.z - other.z, 2));
     }
     @Override
     public String toString() {

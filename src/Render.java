@@ -5,16 +5,13 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Render {
-    static float fps = 30; // FPS
-    static float focal = 256; // FOCAL DISTANCE
-    static int rotAng = 2; // DEGREES TO ROTATE PER FRAME
+    static double fps = 120; // FPS
+    static double focal = 256; // FOCAL DISTANCE
+    static double rotAng = 0.1; // DEGREES TO ROTATE PER FRAME
     static DrawingPanel panel = new DrawingPanel(500,500);
     static Graphics g = panel.getGraphics();
     public static void start() {
         ScheduledExecutorService timedEvent = Executors.newScheduledThreadPool(1);
-        Scanner in = new Scanner(System.in);
-        System.out.print("Press [ENTER] to begin...");
-        String a = in.nextLine();
         timedEvent.scheduleAtFixedRate(Render::update,0,(long)(1000/fps), TimeUnit.MILLISECONDS);
         timedEvent.scheduleAtFixedRate(Render::rotateY,0,(long)(1000/fps), TimeUnit.MILLISECONDS);
     }
@@ -26,9 +23,10 @@ public class Render {
                 Vertex b = e.getB();
                 Point x = a.project(focal);
                 Point y = b.project(focal);
-                g.drawLine(250+x.getX(),250+x.getY(),250+y.getX(),250+y.getY());
+                g.drawLine((int) (Math.round(x.getX())+250), (int) (Math.round(x.getY())+250), (int) (Math.round(y.getX())+250), (int) (Math.round(y.getY())+250));
             });
         });
+        verify();
     }
     public static void rotateY() {
         Cube.getCubes().forEach(c->{
@@ -36,5 +34,9 @@ public class Render {
                 v.rotateY(rotAng);
             });
         });
+    }
+    public static void verify() {
+        Edge a = Cube.getCubes().get(0).getEdges().get(0);
+        System.out.println(a.getA().distanceTo(a.getB()));
     }
 }

@@ -1,14 +1,14 @@
 public class Point {
-    private float x;
-    private float y;
-    public Point(float x, float y) {
+    private double x;
+    private double y;
+    public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
-    public int getX() {
-        return Math.round(x);
+    public double getX() {
+        return x;
     }
-    public int getY() {
-        return Math.round(y);
+    public double getY() {
+        return y;
     }
 }
