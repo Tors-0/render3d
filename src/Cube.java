@@ -1,10 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Cube {
-    private ArrayList<Vertex> v = new ArrayList<>(); // list of all 8 contained vertices
-    private ArrayList<Edge> e = new ArrayList<>(); // list of all 12 edges
-    private static ArrayList<Cube> cubes = new ArrayList<>();
+public class Cube extends Shape {
     public Cube(int x, int y, int z, int len) {
         // initialize vertices to proper points
         v.add(0,new Vertex(x,y,z)); // vertex C
@@ -30,16 +27,7 @@ public class Cube {
         e.add(10,new Edge(v.get(7),v.get(3))); // edge FH
         e.add(11,new Edge(v.get(7),v.get(6))); // edge FE
 
-        // add each cube object to arraylist for render
-        cubes.add(this);
-    }
-    public ArrayList<Edge> getEdges() {
-        return e;
-    }
-    public ArrayList<Vertex> getVertices() {
-        return v;
-    }
-    public static ArrayList<Cube> getCubes() {
-        return cubes;
+        // add each shape object to arraylist for render
+        shapes.add(this);
     }
 }
