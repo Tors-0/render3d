@@ -5,9 +5,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Render {
-    static double fps = 120; // FPS
+    static double fps = 60; // FPS
     static double focal = 256; // FOCAL DISTANCE
-    static double rotAng = 0.1; // DEGREES TO ROTATE PER FRAME
+    static double rotAng = 1; // DEGREES TO ROTATE PER FRAME
     static DrawingPanel panel = new DrawingPanel(500,500);
     static Graphics g = panel.getGraphics();
     public static void start() {
